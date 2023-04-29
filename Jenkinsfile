@@ -33,19 +33,15 @@ pipeline {
     stage('Docker Image Push') {
       steps {
         script {
-          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-id')
-
-          {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+          docker.withRegistry('', 'dockerhub-id') {
+            docker.image("${registry}:${env.BUILD_ID}").push('latest')}
           }
+
         }
-
       }
-    }
 
+    }
+    environment {
+      registry = 'unloki/cicd_learn'
+    }
   }
-  environment {
-    registry = 'unloki/cicd_learn'
-  }
-}
