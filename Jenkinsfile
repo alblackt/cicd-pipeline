@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
         script {
           sh 'chmod +x ./scripts/build.sh'
@@ -21,7 +21,7 @@ pipeline {
       }
     }
 
-    stage('Docker Image Build') {
+    stage('Build Docker Image') {
       steps {
         script {
           def customImage = docker.build("${registry}:${env.BUILD_ID}")
