@@ -11,5 +11,18 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        script {
+          'chmod +x ./script.sh'
+          'sh ./script/test.sh'
+        }
+
+      }
+    }
+
+  }
+  environment {
+    registry = 'unloki/cicd_learn'
   }
 }
