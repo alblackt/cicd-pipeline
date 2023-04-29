@@ -34,14 +34,15 @@ pipeline {
       steps {
         script {
           docker.withRegistry('', 'dockerhub-id') {
-            docker.image("${registry}:${env.BUILD_ID}").push('latest')}
+            docker.image("${registry}:${env.BUILD_ID}").push('latest')
           }
-
         }
-      }
 
+      }
     }
-    environment {
-      registry = 'unloki/cicd_learn'
-    }
+
   }
+  environment {
+    registry = 'unloki/cicd_learn'
+  }
+}
