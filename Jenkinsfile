@@ -4,7 +4,7 @@ pipeline {
     stage('build') {
       steps {
         script {
-          script scripts/build.sh
+          scripts/build.sh
         }
 
       }
